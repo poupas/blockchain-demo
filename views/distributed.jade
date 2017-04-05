@@ -2,17 +2,17 @@ extends layout
 
 block content
   .container-fluid
-    h1 Distributed Blockchain
+    h1 Distributed Blockchain (George Lucas proof)
     - var peers = {1: 'A', 2: 'B', 3: 'C'}
     - each peer, chain in peers
       h3 Peer #{peer}
       .row.row-horizon
         - var blocks = []
-        - blocks.push({block: 1, chain: chain, nonce: 11316, previous: '0000000000000000000000000000000000000000000000000000000000000000'})
-        - blocks.push({block: 2, chain: chain, nonce: 35230, previous: '000015783b764259d382017d91a36d206d0600e2cbb3567748f46a33fe9297cf'})
-        - blocks.push({block: 3, chain: chain, nonce: 12937, previous: '000012fa9b916eb9078f8d98a7864e697ae83ed54f5146bd84452cdafd043c19'})
-        - blocks.push({block: 4, chain: chain, nonce: 35990, previous: '0000b9015ce2a08b61216ba5a0778545bf4ddd7ceb7bbd85dd8062b29a9140bf'})
-        - blocks.push({block: 5, chain: chain, nonce: 56265, previous: '0000ae8bbc96cf89c68be6e10a865cc47c6c48a9ebec3c6cad729646cefaef83'})
+        - blocks.push({block: 1, chain: chain, nonce: 30198, data: 'A long time ago in a galaxy far, far away....',  previous: '0000000000000000000000000000000000000000000000000000000000000000'})
+        - blocks.push({block: 2, chain: chain, nonce: 191816, data: 'An Imperial Star Destroyer attacks a Rebel convoy in search of the stolen plans to their new battle station, the (dun dun dun) Death Star.', previous: '0000953a0730416379f227754a3b41c2480fddd62a07fd5af5e0ce878c90ffa8'})
+        - blocks.push({block: 3, chain: chain, nonce: 87374, data: 'Two droids, C-3PO and R2-D2, escape with the plans and land on the desert planet below. They are purchased by a farmer named Luke Skywalker.', previous: '00003b8e6bc11ed8ed3d413b689e844038f07469eadc7552b5738374e35ade1c'})
+        - blocks.push({block: 4, chain: chain, nonce: 147343, data: 'And then, in the Mos Eisley cantina, Han shoots Greedo first.', previous: '000082bd7a18ce5b6eb7f5cbf6990ec691088c744c20e215feb3e0559772e528'})
+        - blocks.push({block: 5, chain: chain, nonce: 160824, data: 'To be continued...', previous: '0000f3ca0f88112b3ea6f2153c1bd9653f8bd0bfd9fa18c8311122dd3596645b'})
         each block in blocks
           .col-xs-7
             include includes/block.jade

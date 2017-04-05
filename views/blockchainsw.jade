@@ -1,0 +1,44 @@
+extends layout
+
+block content
+  .container-fluid
+    h1 Use the blockchain, Luke
+    .row.row-horizon
+      - var blocks = []
+      - blocks.push({block: 1, chain: 1, nonce: 30198, data: 'A long time ago in a galaxy far, far away....',  previous: '0000000000000000000000000000000000000000000000000000000000000000'})
+      - blocks.push({block: 2, chain: 1, nonce: 191816, data: 'An Imperial Star Destroyer attacks a Rebel convoy in search of the stolen plans to their new battle station, the (dun dun dun) Death Star.', previous: '0000953a0730416379f227754a3b41c2480fddd62a07fd5af5e0ce878c90ffa8'})
+      - blocks.push({block: 3, chain: 1, nonce: 87374, data: 'Two droids, C-3PO and R2-D2, escape with the plans and land on the desert planet below. They are purchased by a farmer named Luke Skywalker.', previous: '00003b8e6bc11ed8ed3d413b689e844038f07469eadc7552b5738374e35ade1c'})
+      - blocks.push({block: 4, chain: 1, nonce: 147343, data: 'And then, in the Mos Eisley cantina, Han shoots Greedo first.', previous: '000082bd7a18ce5b6eb7f5cbf6990ec691088c744c20e215feb3e0559772e528'})
+      - blocks.push({block: 5, chain: 1, nonce: 160824, data: 'To be continued...', previous: '0000f3ca0f88112b3ea6f2153c1bd9653f8bd0bfd9fa18c8311122dd3596645b'})
+      each block in blocks
+        .col-xs-7
+          include includes/block.jade
+
+  script.
+    $(function() {
+      setup(1, 1);
+      setup(2, 1);
+      setup(3, 1);
+      setup(4, 1);
+      setup(5, 1);
+    });
+
+    function getText(block, chain) {
+      return $('#block'+block+'chain'+chain+'number').val() +
+             $('#block'+block+'chain'+chain+'nonce').val() +
+             $('#block'+block+'chain'+chain+'data').val() +
+             $('#block'+block+'chain'+chain+'previous').val();
+    }
+
+    function setup(block, chain) {
+      updateHash(block, chain);
+      $('#block'+block+'chain'+chain+'mineButton').click(function(e) {
+          e.preventDefault();
+          var l = Ladda.create(this);
+          l.start();
+          setTimeout(function() {
+              mine(block, chain, true);
+              l.stop();
+            }, 250); // give UI time to update
+        });
+    }

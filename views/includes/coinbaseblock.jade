@@ -17,7 +17,7 @@
       label.col-sm-2.control-label Coinbase:
       .col-sm-10
         .input-group
-          .input-group-addon $
+          .input-group-addon BTC
           input.form-control(id='block#{block.block}chain#{block.chain}coinbasevalue', type='text', value='#{block.coinbasevalue}', onkeyup='updateChain(#{block.block}, #{block.chain});')
           .input-group-addon -&gt;
           input.form-control(id='block#{block.block}chain#{block.chain}coinbaseto', type='text', value='#{block.coinbaseto}', onkeyup='updateChain(#{block.block}, #{block.chain});')
@@ -27,7 +27,7 @@
       .col-sm-10
         - each tx, x in block.txs
           .input-group
-            .input-group-addon $
+            .input-group-addon BTC
             input.form-control(id='block#{block.block}chain#{block.chain}tx#{x}value', type='text', value='#{tx.value}', onkeyup='updateChain(#{block.block}, #{block.chain});')
             .input-group-addon From:
             input.form-control(id='block#{block.block}chain#{block.chain}tx#{x}from', type='text', value='#{tx.from}', onkeyup='updateChain(#{block.block}, #{block.chain});')
